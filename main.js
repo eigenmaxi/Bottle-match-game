@@ -1,6 +1,6 @@
 /* main.js - Enhanced Debugging Version
-   Restores your perfect game flow, updates minting for Base mainnet
-   Keeps detailed logging and error handling
+   Preserves your perfect game flow, ensures buttons on end screen
+   Updates minting for Base mainnet with detailed logging
 */
 
 const ethersLib = window.ethers;
@@ -163,7 +163,6 @@ async function showEndScreen() {
   // Buttons
   const btnGroup = document.createElement('div');
   btnGroup.className = 'btn-group';
-
   const shareBtn = document.createElement('button');
   shareBtn.className = 'share-btn';
   shareBtn.textContent = '📤 Share Score to Farcaster';
@@ -231,8 +230,9 @@ async function showEndScreen() {
 
   btnGroup.appendChild(shareBtn);
   btnGroup.appendChild(mintBtn);
-  wrapper.appendChild(btnGroup);
-  gameContainer.appendChild(wrapper);
+  wrapper.appendChild(btnGroup); // Append button group to wrapper
+  gameContainer.appendChild(wrapper); // Append wrapper to gameContainer
+  console.log('End screen rendered with buttons:', gameContainer.innerHTML); // Debug log
 }
 
 // ------- HELPER: IMAGE UPLOAD -------
