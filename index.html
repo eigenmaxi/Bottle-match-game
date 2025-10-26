@@ -6,10 +6,7 @@
     <title>Color Bottle Match</title>
 
     <!-- Manifest -->
-    <link
-      rel="manifest"
-      href="https://color-bottle-match.vercel.app/manifest.json"
-    />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Farcaster Frame tags -->
     <meta name="fc:frame" content="vNext" />
@@ -26,11 +23,8 @@
       property="fc:frame:image"
       content="https://color-bottle-match.vercel.app/preview.png"
     />
-    <meta
-      property="fc:frame:post_url"
-      content="https://color-bottle-match.vercel.app/api/frame"
-    />
     <meta property="fc:frame:button:1" content="Play Bottle Match" />
+    <meta property="fc:frame:button:1:action" content="launch_miniapp" />
 
     <!-- Fonts -->
     <link
@@ -44,7 +38,6 @@
     <!-- Ethers (v5 UMD) -->
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
   </head>
-
   <body>
     <div id="game-wrapper">
       <h1>Color Bottle Match</h1>

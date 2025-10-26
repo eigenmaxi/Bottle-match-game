@@ -147,13 +147,17 @@ async function showEndScreen() {
   else if (score > 10) compliment = 'Good job!';
   ctx.fillText(compliment, canvas.width / 2, 660);
 
-  const imageDataUrl = canvas.toDataURL('image/png');
-
-  // Use actual Pinata upload for production
-  const imageUrl = await uploadImage(imageDataUrl);
+  let imageUrl = '';
+  try {
+    const imageDataUrl = canvas.toDataURL('image/png');
+    imageUrl = await uploadImage(imageDataUrl);
+  } catch (error) {
+    console.error('Failed to upload image to Pinata:', error);
+    alert('Image upload failed. You can still share your score!');
+  }
 
   const img = new Image();
-  img.src = imageDataUrl; // Display base64 for UI
+  img.src = canvas.toDataURL('image/png');
   img.className = 'score-img';
 
   const wrapper = document.createElement('div');
@@ -163,6 +167,7 @@ async function showEndScreen() {
   // Buttons
   const btnGroup = document.createElement('div');
   btnGroup.className = 'btn-group';
+
   const shareBtn = document.createElement('button');
   shareBtn.className = 'share-btn';
   shareBtn.textContent = '📤 Share Score to Farcaster';
@@ -176,6 +181,10 @@ async function showEndScreen() {
   mintBtn.className = 'mint-btn';
   mintBtn.textContent = '💎 Mint Scorecard on Base (Fees Apply)';
   mintBtn.onclick = async () => {
+    if (!imageUrl) {
+      alert('Cannot mint: Image upload failed. Please try again.');
+      return;
+    }
     try {
       if (!window.ethereum) {
         alert('Please install Rabby or MetaMask and try again.');
@@ -230,9 +239,9 @@ async function showEndScreen() {
 
   btnGroup.appendChild(shareBtn);
   btnGroup.appendChild(mintBtn);
-  wrapper.appendChild(btnGroup); // Append button group to wrapper
-  gameContainer.appendChild(wrapper); // Append wrapper to gameContainer
-  console.log('End screen rendered with buttons:', gameContainer.innerHTML); // Debug log
+  wrapper.appendChild(btnGroup);
+  gameContainer.appendChild(wrapper);
+  console.log('End screen rendered with buttons:', gameContainer.innerHTML);
 }
 
 // ------- HELPER: IMAGE UPLOAD -------

@@ -8,7 +8,7 @@
   "theme_color": "#7e57c2",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/891/891462.png",
+      "src": "https://color-bottle-match.vercel.app/icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
