@@ -249,6 +249,12 @@ async function uploadImage(imageDataUrl) {
     body: formData,
   });
 
+  if (!response.ok) {
+    const error = await response.json();
+    console.error('Pinata upload failed:', error);
+    throw new Error('Pinata upload failed: ' + error.reason);
+  }
+
   const result = await response.json();
   return `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`;
 }
