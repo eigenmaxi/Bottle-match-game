@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Color Bottle Match</title>
 
+    <!-- Farcaster Mini App Meta Tags -->
+    <meta name="fc:frame" content="vNext" />
+    <meta property="og:title" content="Bottle Match Game" />
+    <meta
+      property="og:image"
+      content="https://bottle-match-game.vercel.app/preview.png"
+    />
+    <meta
+      property="og:description"
+      content="Tap all the bottles before time runs out and mint your scorecard NFT!"
+    />
+    <meta
+      property="fc:frame:post_url"
+      content="https://bottle-match-game.vercel.app"
+    />
+    <meta property="fc:frame:button:1" content="Play Bottle Match" />
+
     <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;500;700&display=swap"
@@ -17,6 +34,7 @@
     <!-- Ethers (v5 UMD) -->
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
   </head>
+
   <body>
     <div id="game-wrapper">
       <h1>Color Bottle Match</h1>
@@ -60,7 +78,7 @@
       <button id="start-button">Start Game</button>
     </div>
 
-    <!-- Main script (runs after ethers is loaded) -->
+    <!-- Main script -->
     <script src="main.js"></script>
   </body>
 </html>
